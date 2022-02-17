@@ -38,7 +38,9 @@ $(function (){
 
     function onDragEnd() {
         const lngLat = marker.getLngLat();
+
         coordinates.style.display = 'block';
+        coordinates.style.visibility = "visible";
         coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
         let newCoords = [`${lngLat.lng}`, `${lngLat.lat}`];
         updateWeather(newCoords);
