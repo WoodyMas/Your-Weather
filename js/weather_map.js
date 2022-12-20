@@ -189,9 +189,7 @@ $(function (){
 
 //  ########################################## Search Bar Updates Map Function #########################################
 
-    // Search Bar
-    document.getElementById('find-city-button').addEventListener('click', function (e) {
-
+    function searchBarFunction(e) {
         e.preventDefault();
 
         const address = document.getElementById('find-city-input').value;
@@ -221,6 +219,15 @@ $(function (){
             $('#find-city-input').val('');
 
         });
+    }
+
+    // Search Bar
+    document.getElementById('find-city-button').addEventListener('click', function (e) {
+        searchBarFunction(e);
     });
+    document.getElementById("find-city-input").addEventListener("keydown", function (e){
+        if (e.code === "Enter")
+        searchBarFunction(e);
+    })
 //  ####################################################################################################################
 });
