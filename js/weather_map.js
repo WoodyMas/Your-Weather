@@ -23,7 +23,7 @@ $(function (){
     //     });
 
     mapboxgl.accessToken = MAPBOX_API_TOKEN;
-    const coordinates = document.getElementById('coordinates');
+    const coordinatesElement = document.getElementById('coordinates');
     const map = new mapboxgl.Map({
         container: 'map',
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
@@ -39,10 +39,10 @@ $(function (){
     function onDragEnd() {
         const lngLat = marker.getLngLat();
 
-        coordinates.style.display = 'block';
+        coordinatesElement.style.display = 'block';
         // changing style of coordinates visibility to "visible" (previously invisible) will make it so when onDragEnd() is called (in other words, when the marker is dragged), the block becomes visible
-        coordinates.style.visibility = "visible";
-        coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+        coordinatesElement.style.visibility = "visible";
+        coordinatesElement.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
         let newCoords = [`${lngLat.lng}`, `${lngLat.lat}`];
         updateWeather(newCoords);
     }
@@ -191,6 +191,7 @@ $(function (){
 
     // Search Bar
     document.getElementById('find-city-button').addEventListener('click', function (e) {
+
         e.preventDefault();
 
         const address = document.getElementById('find-city-input').value;
@@ -201,9 +202,21 @@ $(function (){
             console.log(coordinates);
 
             // const userMarker = new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
+            //const lngLat = marker.getLngLat();
+            //
+            //         coordinates.style.display = 'block';
+            //         // changing style of coordinates visibility to "visible" (previously invisible) will make it so when onDragEnd() is called (in other words, when the marker is dragged), the block becomes visible
+            //         coordinates.style.visibility = "visible";
+            //         coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+            //         let newCoords = [`${lngLat.lng}`, `${lngLat.lat}`];
+            //         updateWeather(newCoords);
 
             map.setCenter(coordinates);
             marker.setLngLat(coordinates);
+            // const lngLat = marker.getLngLat();
+            coordinatesElement.style.display = "block";
+            coordinatesElement.style.visibility = "visible";
+            coordinatesElement.innerHTML = `Longitude: ${coordinates[0]}<br>Latitude: ${coordinates[1]}`;
             updateWeather(coordinates);
             $('#find-city-input').val('');
 
