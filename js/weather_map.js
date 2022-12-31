@@ -40,6 +40,7 @@ $(function (){
         const lngLat = marker.getLngLat();
 
         coordinates.style.display = 'block';
+        // changing style of coordinates visibility to "visible" (previously invisible) will make it so when onDragEnd() is called (in other words, when the marker is dragged), the block becomes visible
         coordinates.style.visibility = "visible";
         coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
         let newCoords = [`${lngLat.lng}`, `${lngLat.lat}`];
