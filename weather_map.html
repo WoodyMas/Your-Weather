@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <script src="../Your-Weather/js/keys.js"></script>
+    <!-- mapbox api javascript -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <!-- mapbox api css -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/weather_map.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/weather_map.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!--############################################ MAIN HEADER ########################################################-->
+<!--#################################################################################################################-->
+
+<!-- Weather App Nav & City Header -->
+    <header>
+    <!-- Bootstrap Navbar -->
+        <nav id="main-navbar" class="navbar bg-primary"> <!-- Navbar element -->
+            <div class="container-fluid">
+                <a class="navbar-brand">Your Weather</a>
+                <!-- Find City Search Bar -->
+                <div id="find-city-wrapper">
+
+                    <!-- Find City Search Bar -->
+                    <div class="col-12">
+                        <!-- Current City Display -->
+                        <div class="col-12">
+                            <h3 id="currentCity" class="">Current City: </h3>
+                        </div>
+                        <!--<hr class="stretchDiv">-->
+                        <label for="find-city-input"></label>
+                        <!-- Find City Search Bar Text Field #find-city-input -->
+                        <input type="text" id="find-city-input" placeholder="Search for a city">
+                        <!-- Find City Button #find-city-button -->
+                        <button id="find-city-button">Find City</button>
+                    </div>
+                </div>
+            </div> <!-- /Navbar element -->
+        </nav>
+    <!-- /Bootstrap Navbar -->
+
+    </header>
+<!-- /Weather App Nav & City Header -->
+
+
+
+<!--########################################### MAP GRAPHIC SECTION #################################################-->
+<!--#################################################################################################################-->
+
+    <!-- Graphic Display Section for Map -->
+    <section>
+
+        <!-- Div wrapper for Map -->
+        <div class="stretchDiv container row mx-auto">
+            <!-- Mapbox-->
+            <div id='map' class="mx-auto-4"></div>
+            <!-- /Mapbox -->
+
+
+
+        </div>
+        <!-- /Div wrapper for Map -->
+
+        <div class="d-flex justify-content-center">
+            <!-- Mapbox Coordinates -->
+            <pre id="coordinates" class="coordinates d-flex"></pre>
+            <!-- Mapbox Coordinates -->
+        </div>
+    </section>
+    <!-- /Graphic Display Section for Map -->
+<!-- Current City Display -->
+<!--    <div class="col-12">-->
+<!--        <h3 id="currentCity" class="">Current City: </h3>-->
+<!--    </div>-->
+<!--<hr class="stretchDiv">-->
+<!--########################################### Forecast Card Section ###############################################-->
+<!--#################################################################################################################-->
+
+    <!-- Forecast Card Main Section -->
+    <main>
+
+        <!-- Forecast Cards (Each card will be generated in this div with the JS function -->
+        <div id="forecast-cards-container" class="container-fluid row justify-content-center">
+        </div>
+        <!-- /Forecast Cards (Each card will be generated in this div with the JS function -->
+
+    </main>
+    <!-- /Forecast Card Main Section -->
+
+<!--    <hr class="stretchDiv"> &lt;!&ndash; Separate info and Map display &ndash;&gt;-->
+
+</body>
+</html>
